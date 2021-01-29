@@ -3,9 +3,12 @@
 return [
     // PageController
     '/' => [
-        'controller' => 'PageController',
-        'action' => 'index'
-    ]
+        'controller' => 'MainController',
+        'action' => 'indexAction'
+    ],
 
-    
-]
+    '/action' => [
+        'controller' => 'qweController',
+        'action' => 'qweAction'
+    ],
+    ];

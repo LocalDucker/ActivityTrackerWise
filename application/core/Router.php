@@ -12,14 +12,14 @@ class Router {
         $this->add($routes);
     }
 
-    function add() {
+    public function add($routes) {
         foreach ($routes as $route => $params) {
             $route = '#^\\' . $route . '$#';
             $this->routes[$route] = $params;
         }
     }
 
-    function match(){
+    public function match(){
         $url = trim($_SERVER['REQUEST_URI']);
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url)) {
@@ -30,24 +30,28 @@ class Router {
         return false;    
     }
 
-    function run(){
+    public function run(){
         if ($this->match()) {
-            $path = 'app\controllers\\' . $this->params['controller'];
+            $path = 'application\controllers\\' . $this->params['controller'];
+
             if (class_exists($path)) {
                 $action = $this->params['action'];
                 if (method_exists($path, $action)) {
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else {
-                    View::error(404);
+                    echo 'no found action ' . $action;
+//                    View::error(404);
                 }
 
             } else {
-                View::error(404);
+                echo 'no found controller ' . $path;
+//                View::error(404);
             }
 
         } else {
-            View::error(404);
+            echo 'no found match ';
+//              View::error(404);
         }
     }
 
