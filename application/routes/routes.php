@@ -1,14 +1,10 @@
 <?php
 
 return [
-    // PageController
+    // MainController
     '/' => [
         'controller' => 'MainController',
         'action' => 'indexAction'
     ],
 
-    '/action' => [
-        'controller' => 'qweController',
-        'action' => 'qweAction'
-    ],
-    ];
+];
