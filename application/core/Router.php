@@ -41,17 +41,16 @@ class Router {
                     $controller->$action();
                 } else {
                     echo 'no found action ' . $action;
-//                    View::error(404);
+                    View::errorCode(404);
                 }
 
             } else {
                 echo 'no found controller ' . $path;
-//                View::error(404);
+                View::errorCode(404);
             }
 
         } else {
-            echo 'no found match ';
-//              View::error(404);
+              View::errorCode(404);
         }
     }
 
