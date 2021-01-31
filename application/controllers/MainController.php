@@ -10,9 +10,12 @@ class MainController extends Controller{
     public function indexAction(){
         $types = $this->model->getTypes();
         $generalInfo = $this->model->getAllGeneralInfo();
+        $stats = $this->model->getStats();
+        // debug($stats);
         $vars = [
             'types' => $types,
-            'generalInfo' => $generalInfo
+            'generalInfo' => $generalInfo,
+            'stats' => $stats
         ];
         $this->view->render('content', $vars);
     }
@@ -33,7 +36,7 @@ class MainController extends Controller{
                 $dateDiff =  date_diff(date_create($_POST['start_time']),date_create($_POST['finish_time']));
                 $intervalInSeconds = (new \DateTime())->setTimeStamp(0)->add($dateDiff)->getTimeStamp();
         
-                if($intervalInSeconds < 0){
+                if($intervalInSeconds <= 0){
                     View::errorCode('404');
                 }
                 $arrInfo['activity_type_id'] = $_POST['activity_type_id'];
