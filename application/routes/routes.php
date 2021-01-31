@@ -6,5 +6,8 @@ return [
         'controller' => 'MainController',
         'action' => 'indexAction'
     ],
-
+    '/record' => [
+        'controller' => 'MainController',
+        'action' => 'saveRecord'
+    ],
 ];

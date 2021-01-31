@@ -23,7 +23,7 @@ class View{
 			require 'application/views/layout.php';
 		}
     }
-    	public function redirect($url) {
+    	static public function redirect($url) {
 		header('location: '.$url);
 		exit;
 	}
