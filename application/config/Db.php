@@ -21,14 +21,29 @@ class Db {
          }
      }
 
+     public function insert($tableName,$data){
+        // getting table columns
+        $keys = implode(',',array_keys($data));
+        $prepareValues = implode(',',array_map(function ($data){
+            return ':'.$data;
+        },array_keys($data)));
+        // making a query
+        $query = "INSERT INTO `$tableName` ($keys) VALUES ($prepareValues)";
+        // prepare query
+        
+        $statement = $this->db->prepare($query);
+        // execute query, and return true or false
+        return $statement->execute($data) ? true : false;
+     }
      public function query($sql, $params = []) {
 		$stmt = $this->db->prepare($sql);
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {
 				$stmt->bindValue(':'.$key, $val);
 			}
-		}
-		$stmt->execute();
+        }
+        
+        $stmt->execute();
 		return $stmt;
 	}
 
