@@ -1,7 +1,10 @@
 pull_request_reviewers:
   - LocalDucker
+  - selenium-sso-user
+pull_request_assignees:
+  - LocalDucker
+  - selenium-sso-user
 files:
   - source: '*.php'
     translation: /translated/%two_letters_code%/%original_file_name%
-pull_request_assignees:
-  - LocalDucker
+
