@@ -11,7 +11,7 @@ class Db {
 
     public function __construct(){
          /* Підключення до бази даних, використовуючи драйвер */
-         $dsn = 'mysql:dbname=activerecord;host=127.0.0.1';
+         $dsn = 'qwerty';
          $user = 'mysql';
          $password = 'mysql';
          try {
